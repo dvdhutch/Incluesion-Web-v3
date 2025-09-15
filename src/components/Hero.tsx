@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import React from "react";
-import { motion, AnimatePresence } from "framer-motion";
+// Removed unused framer-motion imports since we switched to typewriter effect
 
 function clamp(value: number, min: number, max: number): number {
   return Math.max(min, Math.min(max, value));
@@ -16,10 +16,9 @@ export default function Hero() {
   const [displayedText, setDisplayedText] = React.useState("");
   const [isDeleting, setIsDeleting] = React.useState(false);
 
-  const jobTitles = ["Managers", "Executives", "VPs", "Directors", "Sales Reps"];
-
   // Typewriter effect
   React.useEffect(() => {
+    const jobTitles = ["Managers", "Executives", "VPs", "Directors", "Sales Reps"];
     const currentText = jobTitles[currentTitleIndex];
     
     const timeout = setTimeout(() => {
@@ -44,7 +43,7 @@ export default function Hero() {
     }, isDeleting ? 50 : 100); // Faster deletion, slower typing
 
     return () => clearTimeout(timeout);
-  }, [displayedText, currentTitleIndex, isDeleting, jobTitles]);
+  }, [displayedText, currentTitleIndex, isDeleting]);
 
   React.useEffect(() => {
     const recomputeWidth = () => {

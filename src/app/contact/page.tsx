@@ -1,6 +1,6 @@
 "use client";
 
-import type { Metadata } from "next";
+// Removed unused Metadata import
 import { useState } from "react";
 
 export default function Contact() {
@@ -44,7 +44,7 @@ ${formData.message}
               Get in Touch
             </h1>
             <p className="text-xl text-white/80 max-w-3xl mx-auto">
-              Ready to transform your leadership development? We'd love to hear from you and discuss how Incluesion can help your organization.
+              Ready to transform your leadership development? We&apos;d love to hear from you and discuss how Incluesion can help your organization.
             </p>
           </div>
         </div>
@@ -56,9 +56,9 @@ ${formData.message}
             {/* Contact Information */}
             <div className="space-y-8">
               <div className="glass-panel p-8 rounded-2xl">
-                <h2 className="text-2xl font-bold text-white mb-6">Let's Connect</h2>
+                <h2 className="text-2xl font-bold text-white mb-6">Let&apos;s Connect</h2>
                 <p className="text-white/70 mb-8">
-                  Whether you're looking to implement leadership games for your team, need more information about our features, or want to discuss custom solutions, we're here to help.
+                  Whether you&apos;re looking to implement leadership games for your team, need more information about our features, or want to discuss custom solutions, we&apos;re here to help.
                 </p>
                 
                 <div className="space-y-6">

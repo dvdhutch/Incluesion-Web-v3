@@ -34,7 +34,7 @@ export default function Features() {
             </div>
             <h2 className="text-3xl font-bold text-white mb-4">HorseSense</h2>
             <p className="text-white/80 text-lg mb-6">
-              The emotional compass and narrative engine of Incluesion. When something feels "off," trust your instincts.
+              The emotional compass and narrative engine of Incluesion. When something feels &quot;off,&quot; trust your instincts.
             </p>
             <div className="text-left max-w-2xl mx-auto space-y-4">
               <div className="flex items-start">
@@ -102,7 +102,7 @@ export default function Features() {
                 Drag key data points to the timeline. Lock in events. Activate HorseSense. Piece together what went wrong.
               </p>
               <p className="text-white/60 text-sm">
-                NPCs only appear once they've been "named" in other data fragments.
+                NPCs only appear once they&apos;ve been &quot;named&quot; in other data fragments.
               </p>
             </div>
 
@@ -118,7 +118,7 @@ export default function Features() {
                 Complete cases to receive seemingly meaningless objects: paperweights, mugs, horse figurines.
               </p>
               <p className="text-white/60 text-sm">
-                Something that seems like it should matter. But doesn't. Or does it?
+                Something that seems like it should matter. But doesn&apos;t. Or does it?
               </p>
             </div>
 
@@ -167,14 +167,14 @@ export default function Features() {
             <div className="space-y-4 text-white/70">
               <p>
                 Horses, as prey animals, are acutely responsive to body language, emotion, and intention. 
-                They cannot be "managed" through force or facade—they respond only to authenticity.
+                They cannot be &quot;managed&quot; through force or facade—they respond only to authenticity.
               </p>
               <p>
                 Incluesion mirrors this EAL journey: you think you are learning about others, but you are really learning about yourself. 
                 The game develops relational intelligence by recognizing how your energy, mood, and attentiveness affect outcomes.
               </p>
               <p className="text-white/60 text-sm italic text-center mt-6">
-                "Some say these qualities are best understood not by titles, but by watching who can walk calmly beside a horse."
+                &quot;Some say these qualities are best understood not by titles, but by watching who can walk calmly beside a horse.&quot;
               </p>
             </div>
           </div>

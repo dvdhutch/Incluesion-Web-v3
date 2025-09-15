@@ -1,4 +1,5 @@
 import Hero from "@/components/Hero";
+import Image from "next/image";
 
 export default function Home() {
   return (
@@ -13,7 +14,7 @@ export default function Home() {
               Welcome to the Investigation
             </h2>
             <p className="text-white/80 text-lg max-w-2xl mx-auto">
-              You wake up at your desk. Your job is "important." You receive a file. The team imploded. 
+              You wake up at your desk. Your job is &quot;important.&quot; You receive a file. The team imploded. 
               Your task: piece together what went wrong in this liminal corporate world.
             </p>
           </div>
@@ -27,7 +28,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-semibold text-white mb-3">HorseSense Mechanics</h3>
               <p className="text-white/70">
-                Trust your intuition when something feels "off." Use HorseSense to probe deeper into workplace dysfunction and uncover hidden truths.
+                Trust your intuition when something feels &quot;off.&quot; Use HorseSense to probe deeper into workplace dysfunction and uncover hidden truths.
               </p>
             </div>
             
@@ -51,7 +52,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-semibold text-white mb-3">Satirical Mystery</h3>
               <p className="text-white/70">
-                Explore a world where dysfunction is constant and "belonging" is just another KPI. Question everything. Trust no one. Find the horse.
+                Explore a world where dysfunction is constant and &quot;belonging&quot; is just another KPI. Question everything. Trust no one. Find the horse.
               </p>
             </div>
           </div>
@@ -99,9 +100,11 @@ export default function Home() {
           {/* Copyright Section */}
           <div className="mt-16 pt-8 border-t border-white/10">
             <div className="flex flex-col items-center">
-              <img
+              <Image
                 src="/incluesion_workdmark.png"
                 alt="Incluesion wordmark"
+                width={220}
+                height={40}
                 className="h-8 w-auto mb-4 opacity-70"
               />
               <p className="text-white/50 text-sm" style={{ fontFamily: 'var(--font-body)' }}>
