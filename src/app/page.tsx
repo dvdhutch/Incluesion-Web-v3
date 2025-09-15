@@ -1,103 +1,118 @@
-import Image from "next/image";
+import Hero from "@/components/Hero";
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="font-sans">
+      <Hero />
+      
+      {/* Game Features */}
+      <section className="py-24 bg-gradient-to-b from-transparent to-black/20">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+              Welcome to the Investigation
+            </h2>
+            <p className="text-white/80 text-lg max-w-2xl mx-auto">
+              You wake up at your desk. Your job is "important." You receive a file. The team imploded. 
+              Your task: piece together what went wrong in this liminal corporate world.
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="glass-panel p-7 rounded-2xl text-center hover:translate-y-[-2px] transition-transform duration-200">
+              <div className="w-16 h-16 bg-gradient-to-br from-amber-400 to-amber-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-semibold text-white mb-3">HorseSense Mechanics</h3>
+              <p className="text-white/70">
+                Trust your intuition when something feels "off." Use HorseSense to probe deeper into workplace dysfunction and uncover hidden truths.
+              </p>
+            </div>
+            
+            <div className="glass-panel p-7 rounded-2xl text-center hover:translate-y-[-2px] transition-transform duration-200">
+              <div className="w-16 h-16 bg-gradient-to-br from-red-400 to-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-semibold text-white mb-3">Time-Limited Cases</h3>
+              <p className="text-white/70">
+                Navigate 8-hour investigations. Each conversation costs time. Every choice matters. Uncover the timeline of organizational breakdown.
+              </p>
+            </div>
+            
+            <div className="glass-panel p-7 rounded-2xl text-center hover:translate-y-[-2px] transition-transform duration-200">
+              <div className="w-16 h-16 bg-gradient-to-br from-purple-400 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-semibold text-white mb-3">Satirical Mystery</h3>
+              <p className="text-white/70">
+                Explore a world where dysfunction is constant and "belonging" is just another KPI. Question everything. Trust no one. Find the horse.
+              </p>
+            </div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+      </section>
+
+      {/* Gradient Transition */}
+      <div className="h-32" style={{ 
+        background: 'linear-gradient(to bottom, var(--background), #080808)',
+        marginTop: '-1px'
+      }}></div>
+
+      {/* Footer / Call to Action */}
+      <footer style={{ 
+        backgroundColor: '#080808',
+        paddingTop: '6rem',
+        paddingBottom: '6rem',
+        marginTop: '-1px'
+      }}>
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <div className="glass-panel p-12 rounded-3xl hover:translate-y-[-2px] transition-transform duration-200">
+            <h2 className="text-3xl font-bold text-white mb-6">
+              Ready to Investigate?
+            </h2>
+            <p className="text-white/80 mb-8 text-lg">
+              Your desk is waiting. The files are piling up. Someone needs to figure out what went wrong. 
+              Will you trust your HorseSense?
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="/contact"
+                className="inline-flex items-center px-8 py-3 bg-white text-gray-900 font-semibold rounded-lg hover:bg-gray-100 transition-colors duration-200"
+              >
+                Join the Investigation
+              </a>
+              <a
+                href="/pricing"
+                className="inline-flex items-center px-8 py-3 border border-white/30 text-white font-semibold rounded-lg hover:bg-white/10 transition-colors duration-200"
+              >
+                Get Access
+              </a>
+            </div>
+          </div>
+          
+          {/* Copyright Section */}
+          <div className="mt-16 pt-8 border-t border-white/10">
+            <div className="flex flex-col items-center">
+              <img
+                src="/incluesion_workdmark.png"
+                alt="Incluesion wordmark"
+                className="h-8 w-auto mb-4 opacity-70"
+              />
+              <p className="text-white/50 text-sm" style={{ fontFamily: 'var(--font-body)' }}>
+                © Incluesion, Inc. 2025
+              </p>
+            </div>
+          </div>
+        </div>
       </footer>
     </div>
   );
 }
+
+
