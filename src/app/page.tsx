@@ -10,6 +10,13 @@ export default function Home() {
       <section className="py-24 bg-gradient-to-b from-transparent to-black/20">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
+            <Image
+              src="/characters-01.png"
+              alt="Illustration of diverse characters"
+              width={1600}
+              height={900}
+              className="w-full h-auto rounded-2xl mb-8"
+            />
             <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
               Welcome to the Investigation
             </h2>
