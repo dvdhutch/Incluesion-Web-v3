@@ -19,22 +19,15 @@ export default function Home() {
                     alt="Camille Owens"
                     width={200}
                     height={300}
-                    className="w-56 h-84 object-contain mb-2"
-                  />
-                  <Image
-                    src="/images/characters/Camille_Owens_Profile.png"
-                    alt="Camille Owens Profile"
-                    width={80}
-                    height={80}
-                    className="w-20 h-20 rounded-full"
+                    className="w-56 h-84 object-contain"
                   />
                 </div>
                 
-                {/* Speech Bubble - Character on left, bubble on right (mobile), Below on desktop */}
-                <div className="relative md:absolute md:top-full md:mt-6 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-300 transform md:translate-y-2 md:group-hover:translate-y-0 pointer-events-none ml-4 md:ml-0 flex items-center">
+                {/* Speech Bubble - Character on left, bubble on right */}
+                <div className="relative md:absolute md:left-full md:ml-6 md:top-1/2 md:-translate-y-1/2 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-300 transform md:translate-x-2 md:group-hover:translate-x-0 pointer-events-none ml-4 md:ml-6 flex items-center z-10">
                   <div className="relative bg-white/95 backdrop-blur-sm rounded-2xl p-4 shadow-xl border border-white/20 min-w-[200px]">
-                    {/* Speech bubble arrow - left side on mobile, top on desktop */}
-                    <div className="absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-white/95 rotate-45 border-l border-b border-white/20 md:left-1/2 md:top-0 md:-translate-x-1/2 md:-translate-y-1/2 md:border-l md:border-t md:border-b-0 md:border-r-0"></div>
+                    {/* Speech bubble arrow - left side on mobile and desktop */}
+                    <div className="absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-white/95 rotate-45 border-l border-b border-white/20"></div>
                     
                     <h3 className="font-bold text-gray-900 text-sm mb-2">Camille Owens</h3>
                     <p className="text-gray-700 text-xs leading-relaxed">
@@ -52,22 +45,15 @@ export default function Home() {
                     alt="Devin Lin"
                     width={200}
                     height={300}
-                    className="w-56 h-84 object-contain mb-2"
-                  />
-                  <Image
-                    src="/images/characters/Devin_Lin_avatar_Profile.png"
-                    alt="Devin Lin Profile"
-                    width={80}
-                    height={80}
-                    className="w-20 h-20 rounded-full"
+                    className="w-56 h-84 object-contain"
                   />
                 </div>
                 
-                {/* Speech Bubble - Character on right, bubble on left (mobile), Below on desktop */}
-                <div className="relative md:absolute md:top-full md:mt-6 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-300 transform md:translate-y-2 md:group-hover:translate-y-0 pointer-events-none mr-4 md:mr-0 flex items-center">
+                {/* Speech Bubble - Character on right, bubble on left */}
+                <div className="relative md:absolute md:right-full md:mr-6 md:top-1/2 md:-translate-y-1/2 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-300 transform md:-translate-x-2 md:group-hover:translate-x-0 pointer-events-none mr-4 md:mr-6 flex items-center z-10">
                   <div className="relative bg-white/95 backdrop-blur-sm rounded-2xl p-4 shadow-xl border border-white/20 min-w-[200px]">
-                    {/* Speech bubble arrow - right side on mobile, top on desktop */}
-                    <div className="absolute right-0 top-1/2 translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-white/95 rotate-45 border-r border-t border-white/20 md:left-1/2 md:right-auto md:top-0 md:-translate-x-1/2 md:translate-x-0 md:-translate-y-1/2 md:border-l md:border-t md:border-r-0 md:border-b-0"></div>
+                    {/* Speech bubble arrow - right side on mobile and desktop */}
+                    <div className="absolute right-0 top-1/2 translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-white/95 rotate-45 border-r border-t border-white/20"></div>
                     
                     <h3 className="font-bold text-gray-900 text-sm mb-2">Devin Lin</h3>
                     <p className="text-gray-700 text-xs leading-relaxed">
@@ -85,22 +71,15 @@ export default function Home() {
                     alt="Hannah Kwong"
                     width={200}
                     height={300}
-                    className="w-56 h-84 object-contain mb-2"
-                  />
-                  <Image
-                    src="/images/characters/Hannah_Kwong_Profile.png"
-                    alt="Hannah Kwong Profile"
-                    width={80}
-                    height={80}
-                    className="w-20 h-20 rounded-full"
+                    className="w-56 h-84 object-contain"
                   />
                 </div>
                 
-                {/* Speech Bubble - Character on left, bubble on right (mobile), Below on desktop */}
-                <div className="relative md:absolute md:top-full md:mt-6 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-300 transform md:translate-y-2 md:group-hover:translate-y-0 pointer-events-none ml-4 md:ml-0 flex items-center">
+                {/* Speech Bubble - Character on left, bubble on right */}
+                <div className="relative md:absolute md:left-full md:ml-6 md:top-1/2 md:-translate-y-1/2 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-300 transform md:translate-x-2 md:group-hover:translate-x-0 pointer-events-none ml-4 md:ml-6 flex items-center z-10">
                   <div className="relative bg-white/95 backdrop-blur-sm rounded-2xl p-4 shadow-xl border border-white/20 min-w-[200px]">
-                    {/* Speech bubble arrow - left side on mobile, top on desktop */}
-                    <div className="absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-white/95 rotate-45 border-l border-b border-white/20 md:left-1/2 md:top-0 md:-translate-x-1/2 md:-translate-y-1/2 md:border-l md:border-t md:border-b-0 md:border-r-0"></div>
+                    {/* Speech bubble arrow - left side on mobile and desktop */}
+                    <div className="absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-white/95 rotate-45 border-l border-b border-white/20"></div>
                     
                     <h3 className="font-bold text-gray-900 text-sm mb-2">Hannah Kwong</h3>
                     <p className="text-gray-700 text-xs leading-relaxed">
@@ -118,22 +97,15 @@ export default function Home() {
                     alt="Jules Mehta"
                     width={200}
                     height={300}
-                    className="w-56 h-84 object-contain mb-2"
-                  />
-                  <Image
-                    src="/images/characters/Jules_Mehta_avatar_Profile.png"
-                    alt="Jules Mehta Profile"
-                    width={80}
-                    height={80}
-                    className="w-20 h-20 rounded-full"
+                    className="w-56 h-84 object-contain"
                   />
                 </div>
                 
-                {/* Speech Bubble - Character on right, bubble on left (mobile), Below on desktop */}
-                <div className="relative md:absolute md:top-full md:mt-6 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-300 transform md:translate-y-2 md:group-hover:translate-y-0 pointer-events-none mr-4 md:mr-0 flex items-center">
+                {/* Speech Bubble - Character on right, bubble on left */}
+                <div className="relative md:absolute md:right-full md:mr-6 md:top-1/2 md:-translate-y-1/2 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-300 transform md:-translate-x-2 md:group-hover:translate-x-0 pointer-events-none mr-4 md:mr-6 flex items-center z-10">
                   <div className="relative bg-white/95 backdrop-blur-sm rounded-2xl p-4 shadow-xl border border-white/20 min-w-[200px]">
-                    {/* Speech bubble arrow - right side on mobile, top on desktop */}
-                    <div className="absolute right-0 top-1/2 translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-white/95 rotate-45 border-r border-t border-white/20 md:left-1/2 md:right-auto md:top-0 md:-translate-x-1/2 md:translate-x-0 md:-translate-y-1/2 md:border-l md:border-t md:border-r-0 md:border-b-0"></div>
+                    {/* Speech bubble arrow - right side on mobile and desktop */}
+                    <div className="absolute right-0 top-1/2 translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-white/95 rotate-45 border-r border-t border-white/20"></div>
                     
                     <h3 className="font-bold text-gray-900 text-sm mb-2">Jules Mehta</h3>
                     <p className="text-gray-700 text-xs leading-relaxed">
@@ -151,22 +123,15 @@ export default function Home() {
                     alt="Melissa Epps"
                     width={200}
                     height={300}
-                    className="w-56 h-84 object-contain mb-2"
-                  />
-                  <Image
-                    src="/images/characters/Melissa_Epps_avatar_Profile.png"
-                    alt="Melissa Epps Profile"
-                    width={80}
-                    height={80}
-                    className="w-20 h-20 rounded-full"
+                    className="w-56 h-84 object-contain"
                   />
                 </div>
                 
-                {/* Speech Bubble - Character on left, bubble on right (mobile), Below on desktop */}
-                <div className="relative md:absolute md:top-full md:mt-6 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-300 transform md:translate-y-2 md:group-hover:translate-y-0 pointer-events-none ml-4 md:ml-0 flex items-center">
+                {/* Speech Bubble - Character on left, bubble on right */}
+                <div className="relative md:absolute md:left-full md:ml-6 md:top-1/2 md:-translate-y-1/2 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-300 transform md:translate-x-2 md:group-hover:translate-x-0 pointer-events-none ml-4 md:ml-6 flex items-center z-10">
                   <div className="relative bg-white/95 backdrop-blur-sm rounded-2xl p-4 shadow-xl border border-white/20 min-w-[200px]">
-                    {/* Speech bubble arrow - left side on mobile, top on desktop */}
-                    <div className="absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-white/95 rotate-45 border-l border-b border-white/20 md:left-1/2 md:top-0 md:-translate-x-1/2 md:-translate-y-1/2 md:border-l md:border-t md:border-b-0 md:border-r-0"></div>
+                    {/* Speech bubble arrow - left side on mobile and desktop */}
+                    <div className="absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-white/95 rotate-45 border-l border-b border-white/20"></div>
                     
                     <h3 className="font-bold text-gray-900 text-sm mb-2">Melissa Epps</h3>
                     <p className="text-gray-700 text-xs leading-relaxed">
@@ -184,22 +149,15 @@ export default function Home() {
                     alt="Reggie Polk"
                     width={200}
                     height={300}
-                    className="w-56 h-84 object-contain mb-2"
-                  />
-                  <Image
-                    src="/images/characters/Reggie_Polk_avatar_Profile.png"
-                    alt="Reggie Polk Profile"
-                    width={80}
-                    height={80}
-                    className="w-20 h-20 rounded-full"
+                    className="w-56 h-84 object-contain"
                   />
                 </div>
                 
-                {/* Speech Bubble - Character on right, bubble on left (mobile), Below on desktop */}
-                <div className="relative md:absolute md:top-full md:mt-6 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-300 transform md:translate-y-2 md:group-hover:translate-y-0 pointer-events-none mr-4 md:mr-0 flex items-center">
+                {/* Speech Bubble - Character on right, bubble on left */}
+                <div className="relative md:absolute md:right-full md:mr-6 md:top-1/2 md:-translate-y-1/2 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-300 transform md:-translate-x-2 md:group-hover:translate-x-0 pointer-events-none mr-4 md:mr-6 flex items-center z-10">
                   <div className="relative bg-white/95 backdrop-blur-sm rounded-2xl p-4 shadow-xl border border-white/20 min-w-[200px]">
-                    {/* Speech bubble arrow - right side on mobile, top on desktop */}
-                    <div className="absolute right-0 top-1/2 translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-white/95 rotate-45 border-r border-t border-white/20 md:left-1/2 md:right-auto md:top-0 md:-translate-x-1/2 md:translate-x-0 md:-translate-y-1/2 md:border-l md:border-t md:border-r-0 md:border-b-0"></div>
+                    {/* Speech bubble arrow - right side on mobile and desktop */}
+                    <div className="absolute right-0 top-1/2 translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-white/95 rotate-45 border-r border-t border-white/20"></div>
                     
                     <h3 className="font-bold text-gray-900 text-sm mb-2">Reggie Polk</h3>
                     <p className="text-gray-700 text-xs leading-relaxed">
@@ -217,22 +175,15 @@ export default function Home() {
                     alt="Terry Bloom"
                     width={200}
                     height={300}
-                    className="w-56 h-84 object-contain mb-2"
-                  />
-                  <Image
-                    src="/images/characters/Terry_Bloom_Profile.png"
-                    alt="Terry Bloom Profile"
-                    width={80}
-                    height={80}
-                    className="w-20 h-20 rounded-full"
+                    className="w-56 h-84 object-contain"
                   />
                 </div>
                 
-                {/* Speech Bubble - Character on left, bubble on right (mobile), Below on desktop */}
-                <div className="relative md:absolute md:top-full md:mt-6 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-300 transform md:translate-y-2 md:group-hover:translate-y-0 pointer-events-none ml-4 md:ml-0 flex items-center">
+                {/* Speech Bubble - Character on left, bubble on right */}
+                <div className="relative md:absolute md:left-full md:ml-6 md:top-1/2 md:-translate-y-1/2 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-300 transform md:translate-x-2 md:group-hover:translate-x-0 pointer-events-none ml-4 md:ml-6 flex items-center z-10">
                   <div className="relative bg-white/95 backdrop-blur-sm rounded-2xl p-4 shadow-xl border border-white/20 min-w-[200px]">
-                    {/* Speech bubble arrow - left side on mobile, top on desktop */}
-                    <div className="absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-white/95 rotate-45 border-l border-b border-white/20 md:left-1/2 md:top-0 md:-translate-x-1/2 md:-translate-y-1/2 md:border-l md:border-t md:border-b-0 md:border-r-0"></div>
+                    {/* Speech bubble arrow - left side on mobile and desktop */}
+                    <div className="absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-white/95 rotate-45 border-l border-b border-white/20"></div>
                     
                     <h3 className="font-bold text-gray-900 text-sm mb-2">Terry Bloom</h3>
                     <p className="text-gray-700 text-xs leading-relaxed">
