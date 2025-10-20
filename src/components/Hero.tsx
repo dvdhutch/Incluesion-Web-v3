@@ -12,38 +12,6 @@ export default function Hero() {
   const sectionRef = React.useRef<HTMLElement | null>(null);
   const [progress, setProgress] = React.useState(0);
   const [compositeWidth, setCompositeWidth] = React.useState<number>(1200);
-  const [currentTitleIndex, setCurrentTitleIndex] = React.useState(0);
-  const [displayedText, setDisplayedText] = React.useState("");
-  const [isDeleting, setIsDeleting] = React.useState(false);
-
-  // Typewriter effect
-  React.useEffect(() => {
-    const jobTitles = ["Managers", "Executives", "VPs", "Directors", "Sales Reps"];
-    const currentText = jobTitles[currentTitleIndex];
-    
-    const timeout = setTimeout(() => {
-      if (!isDeleting) {
-        // Typing
-        if (displayedText.length < currentText.length) {
-          setDisplayedText(currentText.slice(0, displayedText.length + 1));
-        } else {
-          // Finished typing, wait then start deleting
-          setTimeout(() => setIsDeleting(true), 2000);
-        }
-      } else {
-        // Deleting
-        if (displayedText.length > 0) {
-          setDisplayedText(displayedText.slice(0, -1));
-        } else {
-          // Finished deleting, move to next title
-          setIsDeleting(false);
-          setCurrentTitleIndex((prev) => (prev + 1) % jobTitles.length);
-        }
-      }
-    }, isDeleting ? 50 : 100); // Faster deletion, slower typing
-
-    return () => clearTimeout(timeout);
-  }, [displayedText, currentTitleIndex, isDeleting]);
 
   React.useEffect(() => {
     const recomputeWidth = () => {
@@ -97,41 +65,10 @@ export default function Hero() {
   const triHeight = Math.round(halfWidth * TRI_ASPECT);
 
   return (
-    <section ref={sectionRef} className="relative min-h-[160vh] overflow-visible">
-      {/* Intro header and waitlist form */}
-      <div className="relative z-20 mx-auto max-w-3xl px-6 pt-8 pb-0 -mb-2 text-center">
-        <h1 className="text-[1.8rem] sm:text-[2.4rem] lg:text-[3rem] font-semibold tracking-tight text-white">
-          Leadership Games for{" "}
-          <span className="relative inline-block min-w-[180px] text-left">
-            <span className="inline-block">
-              {displayedText}
-              <span className="animate-pulse">|</span>
-            </span>
-          </span>
-        </h1>
-        <form className="mt-4 mx-auto max-w-sm">
-          <label htmlFor="waitlist-email" className="sr-only">Email address</label>
-          <div className="flex items-center gap-2 rounded-full border border-white/20 bg-white/5 backdrop-blur px-2 py-1.5 shadow-[0_2px_12px_rgba(0,0,0,0.25)]">
-            <input
-              id="waitlist-email"
-              type="email"
-              inputMode="email"
-              autoComplete="email"
-              placeholder="Email address"
-              className="flex-1 bg-transparent px-4 py-2.5 text-sm text-white placeholder-white/60 focus:outline-none"
-            />
-            <button
-              type="button"
-              className="shrink-0 rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-gray-900 hover:bg-gray-100 transition-colors"
-            >
-              Join waitlist
-            </button>
-          </div>
-        </form>
-      </div>
+    <section ref={sectionRef} className="relative min-h-[160vh] overflow-x-hidden overflow-y-visible">
       {/* Triangles stack */}
       {/* Sticky viewport for triangles */}
-      <div className="pointer-events-none sticky top-0 h-screen flex items-center justify-center">
+      <div className="pointer-events-none sticky top-0 h-screen flex items-center justify-center" style={{ marginTop: '-70px' }}>
         <div className="relative" style={{ width: compositeWidth, height: triHeight }}>
           {/* Left triangle (swapped) */}
           <div

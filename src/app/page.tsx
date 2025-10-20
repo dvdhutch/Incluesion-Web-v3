@@ -1,197 +1,97 @@
+"use client";
+
 import Hero from "@/components/Hero";
+import Character from "@/components/Character";
 import Image from "next/image";
+import React from "react";
 
 export default function Home() {
+  const [currentTitleIndex, setCurrentTitleIndex] = React.useState(0);
+  const [displayedText, setDisplayedText] = React.useState("");
+  const [isDeleting, setIsDeleting] = React.useState(false);
+
+  // Typewriter effect
+  React.useEffect(() => {
+    const jobTitles = ["Managers", "Executives", "VPs", "Directors", "Sales Reps"];
+    const currentText = jobTitles[currentTitleIndex];
+    
+    const timeout = setTimeout(() => {
+      if (!isDeleting) {
+        // Typing
+        if (displayedText.length < currentText.length) {
+          setDisplayedText(currentText.slice(0, displayedText.length + 1));
+        } else {
+          // Finished typing, wait then start deleting
+          setTimeout(() => setIsDeleting(true), 2000);
+        }
+      } else {
+        // Deleting
+        if (displayedText.length > 0) {
+          setDisplayedText(displayedText.slice(0, -1));
+        } else {
+          // Finished deleting, move to next title
+          setIsDeleting(false);
+          setCurrentTitleIndex((prev) => (prev + 1) % jobTitles.length);
+        }
+      }
+    }, isDeleting ? 50 : 100); // Faster deletion, slower typing
+
+    return () => clearTimeout(timeout);
+  }, [displayedText, currentTitleIndex, isDeleting]);
+
   return (
-    <div className="font-sans">
+    <div className="font-sans overflow-x-hidden">
       <Hero />
       
       {/* Game Features */}
       <section className="py-24 bg-gradient-to-b from-transparent to-black/20">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
-            <div className="flex flex-col md:flex-row gap-4 justify-center items-start mb-54">
-              {/* Camille Owens */}
-              <div className="group flex flex-row md:flex-col items-center justify-start md:justify-center relative w-full md:w-auto">
-                <div className="flex flex-col items-center transition-transform duration-300 group-hover:scale-105 flex-shrink-0">
-                  <Image
-                    src="/images/characters/Camille_Owens.png"
-                    alt="Camille Owens"
-                    width={200}
-                    height={300}
-                    className="w-56 h-84 object-contain"
-                  />
-                </div>
-                
-                {/* Speech Bubble - Character on left, bubble on right */}
-                <div className="relative md:absolute md:left-full md:ml-6 md:top-1/2 md:-translate-y-1/2 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-300 transform md:translate-x-2 md:group-hover:translate-x-0 pointer-events-none ml-4 md:ml-6 flex items-center z-10">
-                  <div className="relative bg-white/95 backdrop-blur-sm rounded-2xl p-4 shadow-xl border border-white/20 min-w-[200px]">
-                    {/* Speech bubble arrow - left side on mobile and desktop */}
-                    <div className="absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-white/95 rotate-45 border-l border-b border-white/20"></div>
-                    
-                    <h3 className="font-bold text-gray-900 text-sm mb-2">Camille Owens</h3>
-                    <p className="text-gray-700 text-xs leading-relaxed">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Devin Lin */}
-              <div className="group flex flex-row-reverse md:flex-col items-center justify-end md:justify-center relative w-full md:w-auto">
-                <div className="flex flex-col items-center transition-transform duration-300 group-hover:scale-105 flex-shrink-0">
-                  <Image
-                    src="/images/characters/Devin_Lin.png"
-                    alt="Devin Lin"
-                    width={200}
-                    height={300}
-                    className="w-56 h-84 object-contain"
-                  />
-                </div>
-                
-                {/* Speech Bubble - Character on right, bubble on left */}
-                <div className="relative md:absolute md:right-full md:mr-6 md:top-1/2 md:-translate-y-1/2 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-300 transform md:-translate-x-2 md:group-hover:translate-x-0 pointer-events-none mr-4 md:mr-6 flex items-center z-10">
-                  <div className="relative bg-white/95 backdrop-blur-sm rounded-2xl p-4 shadow-xl border border-white/20 min-w-[200px]">
-                    {/* Speech bubble arrow - right side on mobile and desktop */}
-                    <div className="absolute right-0 top-1/2 translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-white/95 rotate-45 border-r border-t border-white/20"></div>
-                    
-                    <h3 className="font-bold text-gray-900 text-sm mb-2">Devin Lin</h3>
-                    <p className="text-gray-700 text-xs leading-relaxed">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Hannah Kwong */}
-              <div className="group flex flex-row md:flex-col items-center justify-start md:justify-center relative w-full md:w-auto">
-                <div className="flex flex-col items-center transition-transform duration-300 group-hover:scale-105 flex-shrink-0">
-                  <Image
-                    src="/images/characters/Hannah_Kwong.png"
-                    alt="Hannah Kwong"
-                    width={200}
-                    height={300}
-                    className="w-56 h-84 object-contain"
-                  />
-                </div>
-                
-                {/* Speech Bubble - Character on left, bubble on right */}
-                <div className="relative md:absolute md:left-full md:ml-6 md:top-1/2 md:-translate-y-1/2 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-300 transform md:translate-x-2 md:group-hover:translate-x-0 pointer-events-none ml-4 md:ml-6 flex items-center z-10">
-                  <div className="relative bg-white/95 backdrop-blur-sm rounded-2xl p-4 shadow-xl border border-white/20 min-w-[200px]">
-                    {/* Speech bubble arrow - left side on mobile and desktop */}
-                    <div className="absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-white/95 rotate-45 border-l border-b border-white/20"></div>
-                    
-                    <h3 className="font-bold text-gray-900 text-sm mb-2">Hannah Kwong</h3>
-                    <p className="text-gray-700 text-xs leading-relaxed">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Jules Mehta */}
-              <div className="group flex flex-row-reverse md:flex-col items-center justify-end md:justify-center relative w-full md:w-auto">
-                <div className="flex flex-col items-center transition-transform duration-300 group-hover:scale-105 flex-shrink-0">
-                  <Image
-                    src="/images/characters/Jules_Mehta.png"
-                    alt="Jules Mehta"
-                    width={200}
-                    height={300}
-                    className="w-56 h-84 object-contain"
-                  />
-                </div>
-                
-                {/* Speech Bubble - Character on right, bubble on left */}
-                <div className="relative md:absolute md:right-full md:mr-6 md:top-1/2 md:-translate-y-1/2 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-300 transform md:-translate-x-2 md:group-hover:translate-x-0 pointer-events-none mr-4 md:mr-6 flex items-center z-10">
-                  <div className="relative bg-white/95 backdrop-blur-sm rounded-2xl p-4 shadow-xl border border-white/20 min-w-[200px]">
-                    {/* Speech bubble arrow - right side on mobile and desktop */}
-                    <div className="absolute right-0 top-1/2 translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-white/95 rotate-45 border-r border-t border-white/20"></div>
-                    
-                    <h3 className="font-bold text-gray-900 text-sm mb-2">Jules Mehta</h3>
-                    <p className="text-gray-700 text-xs leading-relaxed">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Melissa Epps */}
-              <div className="group flex flex-row md:flex-col items-center justify-start md:justify-center relative w-full md:w-auto">
-                <div className="flex flex-col items-center transition-transform duration-300 group-hover:scale-105 flex-shrink-0">
-                  <Image
-                    src="/images/characters/Melissa_Epps.png"
-                    alt="Melissa Epps"
-                    width={200}
-                    height={300}
-                    className="w-56 h-84 object-contain"
-                  />
-                </div>
-                
-                {/* Speech Bubble - Character on left, bubble on right */}
-                <div className="relative md:absolute md:left-full md:ml-6 md:top-1/2 md:-translate-y-1/2 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-300 transform md:translate-x-2 md:group-hover:translate-x-0 pointer-events-none ml-4 md:ml-6 flex items-center z-10">
-                  <div className="relative bg-white/95 backdrop-blur-sm rounded-2xl p-4 shadow-xl border border-white/20 min-w-[200px]">
-                    {/* Speech bubble arrow - left side on mobile and desktop */}
-                    <div className="absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-white/95 rotate-45 border-l border-b border-white/20"></div>
-                    
-                    <h3 className="font-bold text-gray-900 text-sm mb-2">Melissa Epps</h3>
-                    <p className="text-gray-700 text-xs leading-relaxed">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Reggie Polk */}
-              <div className="group flex flex-row-reverse md:flex-col items-center justify-end md:justify-center relative w-full md:w-auto">
-                <div className="flex flex-col items-center transition-transform duration-300 group-hover:scale-105 flex-shrink-0">
-                  <Image
-                    src="/images/characters/Reggie_Polk.png"
-                    alt="Reggie Polk"
-                    width={200}
-                    height={300}
-                    className="w-56 h-84 object-contain"
-                  />
-                </div>
-                
-                {/* Speech Bubble - Character on right, bubble on left */}
-                <div className="relative md:absolute md:right-full md:mr-6 md:top-1/2 md:-translate-y-1/2 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-300 transform md:-translate-x-2 md:group-hover:translate-x-0 pointer-events-none mr-4 md:mr-6 flex items-center z-10">
-                  <div className="relative bg-white/95 backdrop-blur-sm rounded-2xl p-4 shadow-xl border border-white/20 min-w-[200px]">
-                    {/* Speech bubble arrow - right side on mobile and desktop */}
-                    <div className="absolute right-0 top-1/2 translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-white/95 rotate-45 border-r border-t border-white/20"></div>
-                    
-                    <h3 className="font-bold text-gray-900 text-sm mb-2">Reggie Polk</h3>
-                    <p className="text-gray-700 text-xs leading-relaxed">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Terry Bloom */}
-              <div className="group flex flex-row md:flex-col items-center justify-start md:justify-center relative w-full md:w-auto">
-                <div className="flex flex-col items-center transition-transform duration-300 group-hover:scale-105 flex-shrink-0">
-                  <Image
-                    src="/images/characters/Terry_Bloom.png"
-                    alt="Terry Bloom"
-                    width={200}
-                    height={300}
-                    className="w-56 h-84 object-contain"
-                  />
-                </div>
-                
-                {/* Speech Bubble - Character on left, bubble on right */}
-                <div className="relative md:absolute md:left-full md:ml-6 md:top-1/2 md:-translate-y-1/2 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-300 transform md:translate-x-2 md:group-hover:translate-x-0 pointer-events-none ml-4 md:ml-6 flex items-center z-10">
-                  <div className="relative bg-white/95 backdrop-blur-sm rounded-2xl p-4 shadow-xl border border-white/20 min-w-[200px]">
-                    {/* Speech bubble arrow - left side on mobile and desktop */}
-                    <div className="absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-white/95 rotate-45 border-l border-b border-white/20"></div>
-                    
-                    <h3 className="font-bold text-gray-900 text-sm mb-2">Terry Bloom</h3>
-                    <p className="text-gray-700 text-xs leading-relaxed">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    </p>
-                  </div>
-                </div>
-              </div>
+            <div className="flex flex-col md:flex-row gap-4 justify-center items-start mb-54 overflow-x-hidden group/characters">
+              <Character
+                name="Camille Owens"
+                imageSrc="/images/characters/Camille_Owens.png"
+                dialogue="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                bubblePosition="left"
+              />
+              <Character
+                name="Devon Lin"
+                imageSrc="/images/characters/Devin_Lin.png"
+                dialogue="Anna did mention something last week, but...it was probably nothing."
+                bubblePosition="left"
+                role="Logistics & Vendors"
+              />
+              <Character
+                name="Hannah Kwong"
+                imageSrc="/images/characters/Hannah_Kwong.png"
+                dialogue="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                bubblePosition="left"
+              />
+              <Character
+                name="Jules Mehta"
+                imageSrc="/images/characters/Jules_Mehta.png"
+                dialogue="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                bubblePosition="right"
+              />
+              <Character
+                name="Ellen Kwong"
+                imageSrc="/images/characters/Melissa_Epps.png"
+                dialogue="I don't want to point fingers, but we all know who dropped the ball here."
+                bubblePosition="left"
+                role="Director, IACA"
+              />
+              <Character
+                name="Reggie Polk"
+                imageSrc="/images/characters/Reggie_Polk.png"
+                dialogue="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                bubblePosition="right"
+              />
+              <Character
+                name="Terry Bloom"
+                imageSrc="/images/characters/Terry_Bloom.png"
+                dialogue="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                bubblePosition="right"
+              />
             </div>
             <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
               Welcome to the Investigation
@@ -239,6 +139,40 @@ export default function Home() {
               </p>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Leadership Games Section */}
+      <section className="py-24 bg-gradient-to-b from-black/20 to-transparent">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-white mb-8">
+            Leadership Games for{" "}
+            <span className="relative inline-block min-w-[180px] text-left">
+              <span className="inline-block">
+                {displayedText}
+                <span className="animate-pulse">|</span>
+              </span>
+            </span>
+          </h2>
+          <form className="mt-4 mx-auto max-w-sm">
+            <label htmlFor="waitlist-email" className="sr-only">Email address</label>
+            <div className="flex items-center gap-2 rounded-full border border-white/20 bg-white/5 backdrop-blur px-2 py-1.5 shadow-[0_2px_12px_rgba(0,0,0,0.25)]">
+              <input
+                id="waitlist-email"
+                type="email"
+                inputMode="email"
+                autoComplete="email"
+                placeholder="Email address"
+                className="flex-1 bg-transparent px-4 py-2.5 text-sm text-white placeholder-white/60 focus:outline-none"
+              />
+              <button
+                type="button"
+                className="shrink-0 rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-gray-900 hover:bg-gray-100 transition-colors"
+              >
+                Join waitlist
+              </button>
+            </div>
+          </form>
         </div>
       </section>
 
@@ -297,6 +231,29 @@ export default function Home() {
           </div>
         </div>
       </footer>
+      
+      <style jsx global>{`
+        @keyframes float {
+          0%, 100% {
+            transform: translateY(0px);
+          }
+          50% {
+            transform: translateY(-6px);
+          }
+        }
+        
+        .animate-float {
+          animation: float 4s ease-in-out infinite;
+        }
+        
+        .animate-float:nth-child(1) { animation-delay: 0s; }
+        .animate-float:nth-child(2) { animation-delay: 0.8s; }
+        .animate-float:nth-child(3) { animation-delay: 1.6s; }
+        .animate-float:nth-child(4) { animation-delay: 2.4s; }
+        .animate-float:nth-child(5) { animation-delay: 3.2s; }
+        .animate-float:nth-child(6) { animation-delay: 0.4s; }
+        .animate-float:nth-child(7) { animation-delay: 1.2s; }
+      `}</style>
     </div>
   );
 }
