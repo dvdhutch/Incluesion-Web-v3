@@ -4,6 +4,18 @@ import Image from "next/image";
 import React from "react";
 // Removed unused framer-motion imports since we switched to typewriter effect
 
+interface HeroImageContainerProps {
+  children: React.ReactNode;
+}
+
+function HeroImageContainer({ children }: HeroImageContainerProps) {
+  return (
+    <div className="relative w-full h-[80%] max-w-5xl mx-auto rounded-[20px] overflow-hidden">
+      {children}
+    </div>
+  );
+}
+
 function clamp(value: number, min: number, max: number): number {
   return Math.max(min, Math.min(max, value));
 }
@@ -11,17 +23,18 @@ function clamp(value: number, min: number, max: number): number {
 export default function Hero() {
   const sectionRef = React.useRef<HTMLElement | null>(null);
   const [progress, setProgress] = React.useState(0);
-  const [compositeWidth, setCompositeWidth] = React.useState<number>(1200);
+  const [imageLoaded, setImageLoaded] = React.useState(false);
+  const [tableLoaded, setTableLoaded] = React.useState(false);
+  const [tableVisible, setTableVisible] = React.useState(false);
+  const [silhouetteLoaded, setSilhouetteLoaded] = React.useState(false);
+  const [personSittingLoaded, setPersonSittingLoaded] = React.useState(false);
+  const [personSittingVisible, setPersonSittingVisible] = React.useState(false);
+  const [cardsLoaded, setCardsLoaded] = React.useState(false);
+  const [cardsVisible, setCardsVisible] = React.useState(false);
+  const [iconsLoaded, setIconsLoaded] = React.useState(false);
+  const [iconsVisible, setIconsVisible] = React.useState(false);
 
   React.useEffect(() => {
-    const recomputeWidth = () => {
-      const viewport = typeof window !== "undefined" ? window.innerWidth : 1200;
-      const sideMargin = 32; // ~16px on each side
-      const max = 1600; // optional hard cap
-      const target = Math.max(600, Math.min(viewport - sideMargin, max));
-      setCompositeWidth(target);
-    };
-
     const handleScroll = () => {
       const el = sectionRef.current;
       if (!el) return;
@@ -34,110 +47,149 @@ export default function Hero() {
       const raw = (0 - rect.top) / denom;
       setProgress(clamp(raw, 0, 1));
     };
-    recomputeWidth();
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     window.addEventListener("resize", handleScroll);
-    window.addEventListener("resize", recomputeWidth);
     return () => {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleScroll);
-      window.removeEventListener("resize", recomputeWidth);
     };
   }, []);
 
-  // Translate triangles apart as progress goes 0 → 1
-  const maxOffsetPx = Math.round(compositeWidth * 0.25); // slide distance relative to width
-  const easing = (t: number) => 1 - Math.pow(1 - t, 2); // ease-out
-  const eased = easing(progress);
-  const leftTx = -maxOffsetPx * eased;
-  const rightTx = maxOffsetPx * eased;
-  // Slight inward overlap at the start to make triangles feel tighter together
-  const inwardPx = Math.round(compositeWidth * 0.2); // pull halves inward (~35% of width)
-  const leftInward = inwardPx * (1 - eased);
-  const rightInward = -inwardPx * (1 - eased);
   const titleOpacity = clamp(progress * 1.4, 0, 1);
   const titleTranslateY = (1 - titleOpacity) * 16; // slight rise-in
 
-  // Size for each triangle (half of composite). Adjust aspect ratio as needed.
-  const halfWidth = Math.round(compositeWidth / 2);
-  const TRI_ASPECT = 0.7; // height = width * 0.7
-  const triHeight = Math.round(halfWidth * TRI_ASPECT);
-
   return (
-    <section ref={sectionRef} className="relative min-h-[160vh] overflow-x-hidden overflow-y-visible">
-      {/* Triangles stack */}
-      {/* Sticky viewport for triangles */}
-      <div className="pointer-events-none sticky top-0 h-screen flex items-center justify-center" style={{ marginTop: '-70px' }}>
-        <div className="relative" style={{ width: compositeWidth, height: triHeight }}>
-          {/* Left triangle (swapped) */}
-          <div
-            className="absolute left-1/2 top-1/2 will-change-transform overflow-hidden"
+    <section ref={sectionRef} className="relative min-h-[160vh] overflow-x-hidden overflow-y-visible" style={{ backgroundColor: 'var(--background)' }}>
+      {/* Office background */}
+      {/* Sticky viewport for background */}
+      <div className="sticky top-0 h-screen flex items-center justify-center" style={{ marginTop: '-90px', transform: 'translateY(-45px)' }}>
+        <HeroImageContainer>
+          {/* Office background layer */}
+          <Image
+            src="/office background.png"
+            alt="Office background"
+            fill
+            priority
+            className="object-cover transition-opacity duration-200 ease-in-out"
             style={{ 
-              transform: `translate(-100%, -50%) translateX(${leftTx + leftInward}px)`,
-              width: halfWidth,
-              height: triHeight
+              objectFit: 'cover',
+              objectPosition: 'center',
+              opacity: imageLoaded ? 0.5 : 0,
+              borderTopLeftRadius: '20px'
             }}
-          >
-            <Image
-              src="/inclusion_triangle2.png"
-              alt="Triangle left (swapped)"
-              width={halfWidth}
-              height={triHeight}
-              priority
-              style={{ 
-                marginLeft: '-3px',
-                width: halfWidth + 3,
-                height: triHeight
-              }}
-            />
-          </div>
+            onLoad={() => setImageLoaded(true)}
+          />
+          
+          {/* Background silhouette layer */}
+          <Image
+            src="/background sillhoutte.png"
+            alt="Background silhouette"
+            fill
+            priority
+            className="object-cover transition-opacity duration-300 ease-in-out"
+            style={{ 
+              objectFit: 'cover',
+              objectPosition: 'center',
+              opacity: silhouetteLoaded ? 1 : 0
+            }}
+            onLoad={() => setSilhouetteLoaded(true)}
+          />
+          
+          {/* Table layer above background silhouette */}
+          <Image
+            src="/table.png"
+            alt="Table"
+            fill
+            priority
+            className="object-cover transition-opacity duration-300 ease-in-out"
+            style={{ 
+              objectFit: 'cover',
+              objectPosition: 'center',
+              opacity: tableLoaded && tableVisible ? 1 : 0
+            }}
+            onLoad={() => {
+              setTableLoaded(true);
+              setTableVisible(true);
+            }}
+          />
 
-          {/* Right triangle (swapped) */}
-          <div
-            className="absolute left-1/2 top-1/2 will-change-transform"
-            style={{ transform: `translate(0, -50%) translateX(${rightTx + rightInward}px)` }}
-          >
-            <Image
-              src="/inclusion_triangle1.png"
-              alt="Triangle right (swapped)"
-              width={halfWidth}
-              height={triHeight}
-              priority
-            />
-          </div>
-        </div>
-        
-        {/* Slide to continue button */}
-        <div 
-          className="fixed bottom-10 left-1/2 z-50"
-          style={{ 
-            opacity: progress > 0 ? 0 : 1, // Fade out immediately when scrolling starts
-            transform: `translate(-50%, ${progress * 20 - 15}px)`, // Start 5px higher
-            transition: "opacity 200ms ease-out, transform 200ms ease-out"
-          }}
-        >
-          <div className="flex flex-col items-center text-white/70 hover:text-white/90 transition-colors duration-300">
-            <span className="text-sm font-medium mb-2" style={{ fontFamily: 'var(--font-body)' }}>
-              Slide to begin
-            </span>
-            <div className="animate-bounce">
-              <svg 
-                className="w-6 h-6 animate-pulse" 
-                fill="none" 
-                stroke="currentColor" 
-                viewBox="0 0 24 24"
-              >
-                <path 
-                  strokeLinecap="round" 
-                  strokeLinejoin="round" 
-                  strokeWidth={2} 
-                  d="M19 14l-7 7m0 0l-7-7m7 7V3" 
-                />
-              </svg>
-            </div>
-          </div>
-        </div>
+          {/* Person sitting layer */}
+          <Image
+            src="/person sitting.png"
+            alt="Person sitting"
+            fill
+            priority
+            className="object-cover transition-opacity duration-300 ease-in-out"
+            style={{ 
+              objectFit: 'cover',
+              objectPosition: 'center',
+              opacity: personSittingLoaded && personSittingVisible ? 1 : 0
+            }}
+            onLoad={() => {
+              setPersonSittingLoaded(true);
+              // Start fade-in after 0.4 second delay
+              setTimeout(() => setPersonSittingVisible(true), 400);
+            }}
+          />
+
+          {/* Cards layer */}
+          <Image
+            src="/cards.png"
+            alt="Cards"
+            fill
+            priority
+            className="object-cover transition-opacity duration-300 ease-in-out"
+            style={{ 
+              objectFit: 'cover',
+              objectPosition: 'calc(50% - 40px) center',
+              opacity: cardsLoaded && cardsVisible ? 1 : 0
+            }}
+            onLoad={() => {
+              setCardsLoaded(true);
+              // Start fade-in after 0.5 second delay
+              setTimeout(() => setCardsVisible(true), 500);
+            }}
+          />
+
+          {/* Icons left layer */}
+          <Image
+            src="/left icons.png"
+            alt="Icons Left"
+            fill
+            priority
+            className="object-cover transition-opacity duration-300 ease-in-out"
+            style={{ 
+              objectFit: 'contain',
+              objectPosition: 'left center',
+              opacity: iconsLoaded && iconsVisible ? 1 : 0
+            }}
+            onLoad={() => {
+              setIconsLoaded(true);
+              // Start fade-in after 0.5 second delay
+              setTimeout(() => setIconsVisible(true), 500);
+            }}
+          />
+
+          {/* Icons right layer */}
+          <Image
+            src="/right icons.png"
+            alt="Icons Right"
+            fill
+            priority
+            className="object-cover transition-opacity duration-300 ease-in-out"
+            style={{ 
+              objectFit: 'contain',
+              objectPosition: 'right center',
+              opacity: iconsLoaded && iconsVisible ? 1 : 0
+            }}
+            onLoad={() => {
+              setIconsLoaded(true);
+              // Start fade-in after 0.5 second delay
+              setTimeout(() => setIconsVisible(true), 500);
+            }}
+          />
+        </HeroImageContainer>
       </div>
 
       {/* Revealed text */}
