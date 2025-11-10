@@ -18,7 +18,7 @@ export default function Home() {
 
     const timeout = setTimeout(() => {
       setShowIntro(false);
-    }, 2600);
+    }, 4000);
 
     return () => clearTimeout(timeout);
   }, [showIntro]);
