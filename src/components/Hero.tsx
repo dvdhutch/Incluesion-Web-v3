@@ -16,13 +16,7 @@ function HeroImageContainer({ children }: HeroImageContainerProps) {
   );
 }
 
-function clamp(value: number, min: number, max: number): number {
-  return Math.max(min, Math.min(max, value));
-}
-
 export default function Hero() {
-  const sectionRef = React.useRef<HTMLElement | null>(null);
-  const [progress, setProgress] = React.useState(0);
   const [imageLoaded, setImageLoaded] = React.useState(false);
   const [tableLoaded, setTableLoaded] = React.useState(false);
   const [tableVisible, setTableVisible] = React.useState(false);
@@ -34,36 +28,10 @@ export default function Hero() {
   const [iconsLoaded, setIconsLoaded] = React.useState(false);
   const [iconsVisible, setIconsVisible] = React.useState(false);
 
-  React.useEffect(() => {
-    const handleScroll = () => {
-      const el = sectionRef.current;
-      if (!el) return;
-      const rect = el.getBoundingClientRect();
-      const viewportHeight = window.innerHeight || 1;
-      // Normalize progress across the tall section with sticky viewport
-      // 0 when section top hits viewport top, 1 when section has scrolled
-      // past by (sectionHeight - viewportHeight)
-      const denom = Math.max(1, rect.height - viewportHeight);
-      const raw = (0 - rect.top) / denom;
-      setProgress(clamp(raw, 0, 1));
-    };
-    handleScroll();
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    window.addEventListener("resize", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", handleScroll);
-    };
-  }, []);
-
-  const titleOpacity = clamp(progress * 1.4, 0, 1);
-  const titleTranslateY = (1 - titleOpacity) * 16; // slight rise-in
-
   return (
-    <section ref={sectionRef} className="relative min-h-[160vh] overflow-x-hidden overflow-y-visible" style={{ backgroundColor: 'var(--background)' }}>
+    <section className="relative overflow-x-hidden" style={{ backgroundColor: 'var(--background)' }}>
       {/* Office background */}
-      {/* Sticky viewport for background */}
-      <div className="sticky top-0 h-screen flex items-center justify-center" style={{ marginTop: '-90px', transform: 'translateY(-45px)' }}>
+      <div className="py-24 flex items-center justify-center">
         <HeroImageContainer>
           {/* Office background layer */}
           <Image
@@ -193,10 +161,7 @@ export default function Hero() {
       </div>
 
       {/* Revealed text */}
-      <div
-        className="relative z-10 mx-auto max-w-4xl px-6 pt-[100vh] pb-24 text-center"
-        style={{ opacity: titleOpacity, transform: `translateY(${titleTranslateY}px)`, transition: "opacity 200ms ease-out, transform 200ms ease-out" }}
-      >
+      <div className="relative z-10 mx-auto max-w-4xl px-6 py-24 text-center">
         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-white">
           The Team Imploded.<br />Anna Resigned.
         </h1>
@@ -220,12 +185,6 @@ export default function Hero() {
         </div>
       </div>
 
-      <style jsx>{`
-        /* Smooth GPU-accelerated transforms */
-        .will-change-transform {
-          will-change: transform;
-        }
-      `}</style>
     </section>
   );
 }

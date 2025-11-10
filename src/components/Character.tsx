@@ -12,16 +12,16 @@ export default function Character({ name, imageSrc, dialogue, bubblePosition, ro
   const isLeftBubble = bubblePosition === "left";
   
   return (
-    <div className={`group flex ${isLeftBubble ? 'flex-row' : 'flex-row-reverse'} md:flex-col items-center ${isLeftBubble ? 'justify-start' : 'justify-end'} md:justify-center relative w-full md:w-auto my-5 hover:z-20 transition-all duration-300 group-hover:scale-105 group/characters:hover:scale-95 group/characters:group-hover:scale-105 animate-float group-hover:animate-none`}>
-      <div className="flex flex-col items-center transition-all duration-300 group-hover:scale-105 group-hover:brightness-100 group-hover:contrast-100 flex-shrink-0 relative">
+    <div className={`group flex ${isLeftBubble ? 'flex-row' : 'flex-row-reverse'} md:flex-col items-center ${isLeftBubble ? 'justify-start' : 'justify-end'} md:justify-center relative w-full md:w-auto my-5 transition-all duration-300 animate-float hover:z-30 hover:scale-105 md:hover:scale-115 hover:animate-none hover:drop-shadow-[0_12px_38px_rgba(255,255,255,0.35)] group-hover/characters:opacity-40 hover:!opacity-100`}>
+      <div className="flex flex-col items-center transition-all duration-300 flex-shrink-0 relative group-hover/characters:scale-95 group-hover/characters:brightness-75 group-hover/characters:contrast-90 group-hover/characters:grayscale group-hover:scale-110 group-hover:brightness-125 group-hover:contrast-125 group-hover:saturate-150 group-hover:grayscale-0 hover:!grayscale-0 hover:!brightness-110 hover:!contrast-105 hover:!saturate-115">
         {/* Glow effect */}
-        <div className="absolute top-1/4 bottom-1/4 left-1/4 right-1/4 rounded-full bg-gradient-to-r from-blue-400/10 via-purple-400/10 to-pink-400/10 blur-lg scale-110 opacity-0 group-hover:opacity-60 transition-all duration-300 -z-10"></div>
+        <div className="absolute top-1/4 bottom-1/4 left-1/4 right-1/4 rounded-full bg-gradient-to-r from-blue-400/20 via-purple-400/20 to-pink-400/20 blur-xl scale-110 opacity-0 group-hover:opacity-90 group-hover:scale-[1.2] transition-all duration-300 -z-10"></div>
         <Image
           src={imageSrc}
           alt={name}
           width={200}
           height={300}
-          className="w-56 h-84 object-contain transition-all duration-300 brightness-75 contrast-75 grayscale-[0.3] group-hover:brightness-100 group-hover:contrast-100 group-hover:grayscale-0"
+          className="w-56 h-84 object-contain transition-all duration-300 brightness-75 contrast-75 grayscale-[0.3] group-hover/characters:brightness-50 group-hover/characters:contrast-75 group-hover/characters:grayscale group-hover:scale-110 group-hover:brightness-150 group-hover:contrast-125 group-hover:saturate-150 group-hover:grayscale-0 hover:!grayscale-0 hover:!brightness-115 hover:!contrast-110 hover:!saturate-120"
         />
       </div>
       

@@ -9,6 +9,19 @@ export default function Home() {
   const [currentTitleIndex, setCurrentTitleIndex] = React.useState(0);
   const [displayedText, setDisplayedText] = React.useState("");
   const [isDeleting, setIsDeleting] = React.useState(false);
+  const [showIntro, setShowIntro] = React.useState(true);
+
+  React.useEffect(() => {
+    if (!showIntro) {
+      return;
+    }
+
+    const timeout = setTimeout(() => {
+      setShowIntro(false);
+    }, 2600);
+
+    return () => clearTimeout(timeout);
+  }, [showIntro]);
 
   // Typewriter effect
   React.useEffect(() => {
@@ -41,19 +54,43 @@ export default function Home() {
 
   return (
     <div className="font-sans overflow-x-hidden">
-      <Hero />
+      {showIntro && (
+        <div className="triangle-intro-overlay">
+          <Image
+            src="/inclusion_triangle2.png"
+            alt="Incluesion intro triangle top left"
+            fill
+            priority
+            className="triangle-intro triangle-intro--top-left"
+          />
+          <Image
+            src="/inclusion_triangle1.png"
+            alt="Incluesion intro triangle bottom right"
+            fill
+            priority
+            className="triangle-intro triangle-intro--bottom-right"
+          />
+        </div>
+      )}
+
+      <div
+        className={`intro-content ${
+          showIntro ? "intro-content--hidden" : "intro-content--visible"
+        }`}
+      >
+        <Hero />
       
-      {/* Game Features */}
-      <section className="py-24 bg-gradient-to-b from-transparent to-black/20">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <div className="flex flex-col md:flex-row gap-4 justify-center items-start mb-54 overflow-x-hidden group/characters">
-              <Character
-                name="Camille Owens"
-                imageSrc="/images/characters/Camille_Owens.png"
-                dialogue="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-                bubblePosition="left"
-              />
+        {/* Game Features */}
+        <section className="py-24 bg-gradient-to-b from-transparent to-black/20">
+          <div className="max-w-6xl mx-auto px-6">
+            <div className="text-center mb-16">
+              <div className="flex flex-col md:flex-row gap-4 justify-center items-start md:items-center mb-54 group/characters min-h-[460px] md:min-h-[520px] py-12 md:py-16 w-full max-w-5xl mx-auto px-6 sm:px-10 lg:px-16 overflow-visible">
+                <Character
+                  name="Camille Owens"
+                  imageSrc="/images/characters/Camille_Owens.png"
+                  dialogue="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                  bubblePosition="left"
+                />
               <Character
                 name="Devon Lin"
                 imageSrc="/images/characters/Devin_Lin.png"
@@ -143,117 +180,118 @@ export default function Home() {
       </section>
 
       {/* Leadership Games Section */}
-      <section className="py-24 bg-gradient-to-b from-black/20 to-transparent">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-white mb-8">
-            Leadership Games for{" "}
-            <span className="relative inline-block min-w-[180px] text-left">
-              <span className="inline-block">
-                {displayedText}
-                <span className="animate-pulse">|</span>
+        <section className="py-24 bg-gradient-to-b from-black/20 to-transparent">
+          <div className="max-w-4xl mx-auto px-6 text-center">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-white mb-8">
+              Leadership Games for{" "}
+              <span className="relative inline-block min-w-[180px] text-left">
+                <span className="inline-block">
+                  {displayedText}
+                  <span className="animate-pulse">|</span>
+                </span>
               </span>
-            </span>
-          </h2>
-          <form className="mt-4 mx-auto max-w-sm">
-            <label htmlFor="waitlist-email" className="sr-only">Email address</label>
-            <div className="flex items-center gap-2 rounded-full border border-white/20 bg-white/5 backdrop-blur px-2 py-1.5 shadow-[0_2px_12px_rgba(0,0,0,0.25)]">
-              <input
-                id="waitlist-email"
-                type="email"
-                inputMode="email"
-                autoComplete="email"
-                placeholder="Email address"
-                className="flex-1 bg-transparent px-4 py-2.5 text-sm text-white placeholder-white/60 focus:outline-none"
-              />
-              <button
-                type="button"
-                className="shrink-0 rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-gray-900 hover:bg-gray-100 transition-colors"
-              >
-                Join waitlist
-              </button>
-            </div>
-          </form>
-        </div>
-      </section>
-
-      {/* Gradient Transition */}
-      <div className="h-32" style={{ 
-        background: 'linear-gradient(to bottom, var(--background), #080808)',
-        marginTop: '-1px'
-      }}></div>
-
-      {/* Footer / Call to Action */}
-      <footer style={{ 
-        backgroundColor: '#080808',
-        paddingTop: '6rem',
-        paddingBottom: '6rem',
-        marginTop: '-1px'
-      }}>
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <div className="glass-panel p-12 rounded-3xl hover:translate-y-[-2px] transition-transform duration-200">
-            <h2 className="text-3xl font-bold text-white mb-6">
-              Ready to Investigate?
             </h2>
-            <p className="text-white/80 mb-8 text-lg">
-              Your desk is waiting. The files are piling up. Someone needs to figure out what went wrong. 
-              Will you trust your HorseSense?
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="/contact"
-                className="inline-flex items-center px-8 py-3 bg-white text-gray-900 font-semibold rounded-lg hover:bg-gray-100 transition-colors duration-200"
-              >
-                Join the Investigation
-              </a>
-              <a
-                href="/pricing"
-                className="inline-flex items-center px-8 py-3 border border-white/30 text-white font-semibold rounded-lg hover:bg-white/10 transition-colors duration-200"
-              >
-                Get Access
-              </a>
-            </div>
+            <form className="mt-4 mx-auto max-w-sm">
+              <label htmlFor="waitlist-email" className="sr-only">Email address</label>
+              <div className="flex items-center gap-2 rounded-full border border-white/20 bg-white/5 backdrop-blur px-2 py-1.5 shadow-[0_2px_12px_rgba(0,0,0,0.25)]">
+                <input
+                  id="waitlist-email"
+                  type="email"
+                  inputMode="email"
+                  autoComplete="email"
+                  placeholder="Email address"
+                  className="flex-1 bg-transparent px-4 py-2.5 text-sm text-white placeholder-white/60 focus:outline-none"
+                />
+                <button
+                  type="button"
+                  className="shrink-0 rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-gray-900 hover:bg-gray-100 transition-colors"
+                >
+                  Join waitlist
+                </button>
+              </div>
+            </form>
           </div>
-          
-          {/* Copyright Section */}
-          <div className="mt-16 pt-8 border-t border-white/10">
-            <div className="flex flex-col items-center">
-              <Image
-                src="/incluesion_workdmark.png"
-                alt="Incluesion wordmark"
-                width={220}
-                height={40}
-                className="h-8 w-auto mb-4 opacity-70"
-              />
-              <p className="text-white/50 text-sm" style={{ fontFamily: 'var(--font-body)' }}>
-                © Incluesion, Inc. 2025
+        </section>
+
+        {/* Gradient Transition */}
+        <div className="h-32" style={{ 
+          background: 'linear-gradient(to bottom, var(--background), #080808)',
+          marginTop: '-1px'
+        }}></div>
+
+        {/* Footer / Call to Action */}
+        <footer style={{ 
+          backgroundColor: '#080808',
+          paddingTop: '6rem',
+          paddingBottom: '6rem',
+          marginTop: '-1px'
+        }}>
+          <div className="max-w-4xl mx-auto px-6 text-center">
+            <div className="glass-panel p-12 rounded-3xl hover:translate-y-[-2px] transition-transform duration-200">
+              <h2 className="text-3xl font-bold text-white mb-6">
+                Ready to Investigate?
+              </h2>
+              <p className="text-white/80 mb-8 text-lg">
+                Your desk is waiting. The files are piling up. Someone needs to figure out what went wrong. 
+                Will you trust your HorseSense?
               </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <a
+                  href="/contact"
+                  className="inline-flex items-center px-8 py-3 bg-white text-gray-900 font-semibold rounded-lg hover:bg-gray-100 transition-colors duration-200"
+                >
+                  Join the Investigation
+                </a>
+                <a
+                  href="/pricing"
+                  className="inline-flex items-center px-8 py-3 border border-white/30 text-white font-semibold rounded-lg hover:bg-white/10 transition-colors duration-200"
+                >
+                  Get Access
+                </a>
+              </div>
+            </div>
+          
+            {/* Copyright Section */}
+            <div className="mt-16 pt-8 border-t border-white/10">
+              <div className="flex flex-col items-center">
+                <Image
+                  src="/incluesion_workdmark.png"
+                  alt="Incluesion wordmark"
+                  width={220}
+                  height={40}
+                  className="h-8 w-auto mb-4 opacity-70"
+                />
+                <p className="text-white/50 text-sm" style={{ fontFamily: 'var(--font-body)' }}>
+                  © Incluesion, Inc. 2025
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-      </footer>
+        </footer>
       
-      <style jsx global>{`
-        @keyframes float {
-          0%, 100% {
-            transform: translateY(0px);
+        <style jsx global>{`
+          @keyframes float {
+            0%, 100% {
+              transform: translateY(0px);
+            }
+            50% {
+              transform: translateY(-6px);
+            }
           }
-          50% {
-            transform: translateY(-6px);
+          
+          .animate-float {
+            animation: float 4s ease-in-out infinite;
           }
-        }
-        
-        .animate-float {
-          animation: float 4s ease-in-out infinite;
-        }
-        
-        .animate-float:nth-child(1) { animation-delay: 0s; }
-        .animate-float:nth-child(2) { animation-delay: 0.8s; }
-        .animate-float:nth-child(3) { animation-delay: 1.6s; }
-        .animate-float:nth-child(4) { animation-delay: 2.4s; }
-        .animate-float:nth-child(5) { animation-delay: 3.2s; }
-        .animate-float:nth-child(6) { animation-delay: 0.4s; }
-        .animate-float:nth-child(7) { animation-delay: 1.2s; }
-      `}</style>
+          
+          .animate-float:nth-child(1) { animation-delay: 0s; }
+          .animate-float:nth-child(2) { animation-delay: 0.8s; }
+          .animate-float:nth-child(3) { animation-delay: 1.6s; }
+          .animate-float:nth-child(4) { animation-delay: 2.4s; }
+          .animate-float:nth-child(5) { animation-delay: 3.2s; }
+          .animate-float:nth-child(6) { animation-delay: 0.4s; }
+          .animate-float:nth-child(7) { animation-delay: 1.2s; }
+        `}</style>
+      </div>
     </div>
   );
 }
