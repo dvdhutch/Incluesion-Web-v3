@@ -161,7 +161,7 @@ export default function Hero() {
       </div>
 
       {/* Revealed text */}
-      <div className="relative z-10 mx-auto max-w-4xl px-6 py-24 text-center">
+      <div className="relative z-10 mx-auto max-w-4xl px-6 pt-10 pb-24 text-center">
         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-white">
           The Team Imploded.<br />Anna Resigned.
         </h1>
